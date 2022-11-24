@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: project-environments
+  namespace: argocd
+spec:
+  destination:
+    namespace: 'argocd'
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: 'environments'
+    repoURL: 'https://github.com/{{{ ORG_NAME }}}/default-project.git'
+    targetRevision: HEAD
+    directory:
+      recurse: true
+      include: '*/*/application.yaml'
+  project: default
+  syncPolicy:
+    # I suspect in practice the syncPolicy might diverge for production vs others...
+    automated:
+      prune: true
+      selfHeal: true

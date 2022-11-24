@@ -1,0 +1,7 @@
+apiVersion: management.diegocloud.io/v1alpha1
+kind: Environment
+metadata:
+  name: production
+spec:
+  generatedHostDomain: diego.{{{ DOMAIN }}}
+  applications: []
