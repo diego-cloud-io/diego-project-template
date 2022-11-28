@@ -7,4 +7,4 @@ Core template fields:
 
 ## repo setup
 
-The template default project repo is setup as a template and can be used to create default-project in client Github Org at the time of Diego installations
+The template default project repo is setup as a template and can be used to create diego-default-project in client Github Org at the time of Diego installations

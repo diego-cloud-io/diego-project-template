@@ -9,7 +9,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     path: 'environments'
-    repoURL: 'https://github.com/{{{ ORG_NAME }}}/default-project.git'
+    repoURL: 'https://github.com/{{{ ORG_NAME }}}/diego-default-project.git'
     targetRevision: HEAD
     directory:
       recurse: true
