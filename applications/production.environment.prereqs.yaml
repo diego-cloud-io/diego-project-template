@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: production-env-prereqs
+  namespace: argocd  
+spec:
+  project: default
+  syncPolicy:
+    automated: {}
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: applications
+  source:
+    chart: environment
+    repoURL: https://diego-cloud-io.github.io/helm-charts/
+    targetRevision: 0.1.0
+
+    helm:
+      releaseName: production-env-prereqs
+      values: |
+        secrets_role_arn: arn:aws:iam::{{{ AWS_ACCOUNT_ID }}}:role/DiegoAppSecretsReaderRoleProd
