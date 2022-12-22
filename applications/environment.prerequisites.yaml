@@ -1,0 +1,28 @@
+apiVersion: management.diegocloud.io/v1alpha1
+kind: Version
+metadata:
+  name: env-prerequisites-0.1.0
+data:
+  applicationName: env-prerequisites
+  diegoConfig: |
+    helm:
+      name: environment
+      version: "0.1.0"
+      repository: https://diego-cloud-io.github.io/helm-charts
+
+---
+apiVersion: management.diegocloud.io/v1alpha1
+kind: Version
+metadata:
+  name: env-prerequisites-preview
+data:
+  applicationName: env-prerequisites
+  diegoConfig: |
+    helm:
+      name: environment
+      version: "0.1.0"
+      repository: https://diego-cloud-io.github.io/helm-charts
+
+      defaultValues: |
+        secrets_role_arn: "arn:aws:iam::{{{ AWS_ACCOUNT_ID }}}:role/DiegoAppSecretsReaderRolePreview"
+      
